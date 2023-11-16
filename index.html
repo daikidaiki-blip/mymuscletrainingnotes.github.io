@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>筋トレメニュー</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #666;
+        }
+
+        select {
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        select:hover {
+            background-color: #ddd;
+        }
+
+        #exerciseDetails {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        #exerciseDetails1 {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #eee;
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        #timer {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>筋トレメニュー</h1>
+    
+    <h2>メニュー選択(ジム)</h2>
+    <select id="exerciseSelect" onchange="showExerciseDetails()">
+        <option value="tenten">--</option>
+        <option value="mune">胸</option>
+        <option value="kata">肩</option>
+        <option value="jyouwanni">上腕二頭筋</option>
+        <option value="jyouwansan">上腕三頭筋</option>
+        <option value="zenwan">前腕</option>
+        <option value="senaka">背中</option>
+        <option value="ashi">脚</option>
+        <option value="hara">腹筋</option>
+    </select>
+
+    <div id="exerciseDetails">
+        <!-- 筋トレメニューの詳細がここに表示されます -->
+    </div>
+
+    <h2>メニュー選択（自宅）</h2>
+    <select id="exerciseSelect1" onchange="showExerciseDetails1()">
+        <option value="tenten">--</option>
+        <option value="mune">胸</option>
+        <option value="kata">肩</option>
+        <option value="jyouwanni">上腕二頭筋</option>
+        <option value="jyouwansan">上腕三頭筋</option>
+        <option value="zenwan">前腕</option>
+        <option value="senaka">背中</option>
+        <option value="ashi">脚</option>
+        <option value="hara">腹筋</option>
+    </select>
+
+    <div id="exerciseDetails1">
+        <!-- 筋トレメニューの詳細がここに表示されます -->
+    </div>
+
+    
+    <h2>自分のトレーニング</h2>
+    <input type="text" id="exerciseName" placeholder="筋トレ名">
+    <input type="text" id="weight" placeholder="重量">
+    <input type="text" id="reps" placeholder="回数">
+    <button onclick="addExercise()">追加</button>
+
+    <h2>トレーニング一覧</h2>
+    <ul id="exerciseList">
+        <!-- トレーニング一覧がここに表示されます -->
+    </ul>
+
+    <h2>タイマー</h2>
+    <div id="timer">00:00</div>
+    <button onclick="startTimer()">スタート</button>
+    <button onclick="stopTimer()">ストップ</button>
+    
+    <script>
+        function showExerciseDetails() {
+            var select = document.getElementById("exerciseSelect");
+            var selectedExercise = select.value;
+
+            var details = document.getElementById("exerciseDetails");
+            if (selectedExercise === "tenten") {
+                details.innerHTML = " ";
+            } 
+            else if (selectedExercise === "mune") {
+                details.innerHTML = "胸トレメニュー<br>1.ベンチプレス 3~5セット<br>2.インクラインベンチプレス 3~5セット<br>3.ペックフライ 3~5セット<br>";
+                details.innerHTML += '<img src="C:\\Users\\Takas\\OneDrive\\画像\\課題研究写真\\ベンチプレス.png" alt="ベンチプレスの画像">';
+            } else if (selectedExercise === "kata") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "jyouwanni") {
+                details.innerHTML = "デッドリフトの詳細: 背中と脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "jyouwansan") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "zenwan") {
+                details.innerHTML = "デッドリフトの詳細: 背中と脚の筋肉を鍛える演習です。";
+            }else if (selectedExercise === "senaka") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "ashi") {
+                details.innerHTML = "デッドリフトの詳細: 背中と脚の筋肉を鍛える演習です。";
+            }else if (selectedExercise === "hara") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } 
+        }
+        function showExerciseDetails1() {
+            var select = document.getElementById("exerciseSelect1");
+            var selectedExercise = select.value;
+
+            var details = document.getElementById("exerciseDetails1");
+            if (selectedExercise === "tenten") {
+                details.innerHTML = " ";
+            } 
+            else if (selectedExercise === "mune") {
+                details.innerHTML = "1.ベンチプレス 3~5セット<br>2.インクラインベンチプレス 3~5セット<br>3.ペックフライ 3~5セット<br>";
+            } else if (selectedExercise === "kata") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "jyouwanni") {
+                details.innerHTML = "デッドリフトの詳細: 背中と脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "jyouwansan") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "zenwan") {
+                details.innerHTML = "デッドリフトの詳細: 背中と脚の筋肉を鍛える演習です。";
+            }else if (selectedExercise === "senaka") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } else if (selectedExercise === "ashi") {
+                details.innerHTML = "デッドリフトの詳細: 背中と脚の筋肉を鍛える演習です。";
+            }else if (selectedExercise === "hara") {
+                details.innerHTML = "スクワットの詳細: 脚の筋肉を鍛える演習です。";
+            } 
+        }
+
+        function addExercise() {
+            var name = document.getElementById("exerciseName").value;
+            var weight = document.getElementById("weight").value;
+            var reps = document.getElementById("reps").value;
+
+            var list = document.getElementById("exerciseList");
+            var listItem = document.createElement("li");
+            listItem.innerHTML = name + " - 重量: " + weight + " kg, 回数: " + reps;
+            list.appendChild(listItem);
+        }
+
+        var timerInterval;
+        var timerTime = 0;
+        var timerRunning = false;
+
+        function startTimer() {
+            if (!timerRunning) {
+                timerInterval = setInterval(updateTimer, 1000);
+                timerRunning = true;
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerRunning = false;
+        }
+
+        function updateTimer() {
+            timerTime++;
+            var minutes = Math.floor(timerTime / 60);
+            var seconds = timerTime % 60;
+            document.getElementById("timer").innerText = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+        }
+    </script>
+</body>
+</html>
